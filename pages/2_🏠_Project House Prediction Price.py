@@ -22,7 +22,7 @@ st.title('House prediction in Perth Australia')
 
 @st.cache
 def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/EdgarSic90/DataSc/main/House_Prediction_FIles/all_perth_310121.csv")
+    df = pd.read_csv("https://raw.githubusercontent.com/EdgarSic90/DataS/main/House_Prediction_FIles/all_perth_310121.csv")
     
     return df
 
@@ -32,7 +32,7 @@ df = load_data()
 def load_data2():
      global __data_columns
      global __locations 
-     url = 'https://raw.githubusercontent.com/EdgarSic90/DataSc/main/House_Prediction_FIles/columns.json'
+     url = 'https://raw.githubusercontent.com/EdgarSic90/DataS/main/House_Prediction_FIles/columns.json'
      f = requests.get(url)
      __data_columns = f.json()['data_columns']
      __locations = __data_columns[6:]
@@ -41,7 +41,7 @@ def load_data2():
 def load_data4():
      global __data_columns
      global __locations 
-     url = 'https://raw.githubusercontent.com/EdgarSic90/DataSc/main/House_Prediction_FIles/columns.json'
+     url = 'https://raw.githubusercontent.com/EdgarSic90/DataS/main/House_Prediction_FIles/columns.json'
      f = requests.get(url)
      __data_columns = f.json()['data_columns']
      return __data_columns
