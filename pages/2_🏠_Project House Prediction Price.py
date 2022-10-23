@@ -19,11 +19,11 @@ import requests
 
 st.title('House price prediction in Perth Australia')
 st.write("""
-         In this project I explored a data set of many features aming to predict house prices in Perth.
-         On a [jupyter notebook](https://github.com/EdgarSic90/DataS/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
+         In this project I've explored a data set of many features aming to predict house prices in Perth.
+         On this [jupyter notebook](https://github.com/EdgarSic90/DataS/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
          preprocessing data by handling categorical features and numerical distributions.
-         Finally building an tuning a regression model.
-         ''Below in an interactive map with a few metrics to better grasp the dataset used''
+         Finally building and tuning a regression model.
+         /nBelow i an interactive map with a few metrics to better grasp the dataset used
          """)
 
 
