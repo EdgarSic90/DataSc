@@ -124,8 +124,8 @@ clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
 #_class, centroid_list = clf.predict2(df)
 
-container.write(clf.predict(df.values, plot = True))
-#container.pyplot(clf.plot_fig2(df, _class, centroid_list[-1]))
+#container.write(clf.predict(df.values, plot = True))
+container.pyplot(clf.predict(df.values, plot = True))
 
 df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
