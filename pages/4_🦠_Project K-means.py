@@ -20,7 +20,7 @@ st.write("""
          Developping a K-means clustering model without the very famous sklearn package was one of my first academic project.
          It's a great way to translate basic mathematical principles into python code !
          """)
-st.write("You'll find the code on this [Jupyter notebook](https://github.com/EdgarSic90/DataSc/tree/master/LIVE%20TRADING%20BOT) & some analysis of the algorithm")
+st.write("You'll find the code on this [Jupyter notebook](https://github.com/EdgarSic90/DataSc/blob/master/K-MEANS%20FROM%20SCRATCH/K-means%20Final%20Edgar%20SICAT.ipynb) & some analysis of the algorithm")
 st.write("Below you'll be able to test the model with your number of clusters on a customer data set")
 
 sns.set_theme()
@@ -118,7 +118,7 @@ class Kmeans:
         Class = pd.DataFrame(list(range(0,len(Centroids))) , columns=["ClassCentoid"])
         Result2 = pd.concat([Centroid, Class], axis=1)                               # Concatenating the Centroid list with an array created with class
         sns.set(rc={'figure.figsize':(11.7,8.27)})
-        ax = sns.scatterplot(data=Result, x="Annual_Income_(k$)", y="Spending_Score", hue="Class", palette="bright", legend=False)      # Clusters display
+        ax = sns.scatterplot(data=Result, x="Annual_Income_(k$)", y="Spending_Score", hue="Class", palette="bright")      # Clusters display
         ax = sns.scatterplot(data=Result2, x="Annual_Income_(k$)", y="Spending_Score", hue="ClassCentoid", palette="dark", s=100, legend=False)   # Centroid display
         return plt
 
