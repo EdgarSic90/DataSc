@@ -16,7 +16,7 @@ st.title('Live Trading Bot')
 st.write("""
          In this project I've create a robust live trading model placing orders with FTX broker API.
          A telegram bot for 24/7 (alert and general wallet information as been implemented.
-         You'll find the code on this [github repository](https://github.com/EdgarSic90/DataS/tree/master/LIVE%20TRADING%20BOT), the current strategy was to predict 5 min candles
+         You'll find the code on this [github repository](https://github.com/EdgarSic90/DataSc/tree/master/LIVE%20TRADING%20BOT), the current strategy was to predict 5 min candles
          with mutiple features and make trading decisions from it. 
          To evaluate the strategy & selection of assets a python Backtesting script has been developped as well.
          """)

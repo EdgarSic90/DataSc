@@ -16,7 +16,7 @@ st.set_page_config(
     )
 
 st.sidebar.success("Select a page above.")
-st.sidebar.write('💻 Find the code on [Github](https://github.com/EdgarSic90/DataS)')
+st.sidebar.write('💻 Find the code on [Github](https://github.com/EdgarSic90/DataSc)')
 st.sidebar.write('💬 Contact me on [Linkedin](https://linkedin.com/in/edgar-sicat)')
 
 def lad_lottieurl(url):
@@ -43,7 +43,7 @@ lottie_coding = lad_lottieurl("https://assets2.lottiefiles.com/packages/lf20_qp1
 with st.container():
     st.subheader("Hi, I am Edgar :wave:")
     st.write("This is a platform presenting some of my projects !")
-    st.write("Feel free to explore the code on my [Github](https://github.com/EdgarSic90/DataS)")
+    st.write("Feel free to explore the code on my [Github](https://github.com/EdgarSic90/DataSc)")
     st.write("Open for opportunities >[Linkedin](https://linkedin.com/in/edgar-sicat)")
 
 

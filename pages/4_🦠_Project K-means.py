@@ -20,7 +20,7 @@ st.write("""
          Developping a K-means clustering model without the very famous sklearn package was one of my first academic project.
          It's a great way to translate basic mathematical principles into python code !
          """)
-st.write("You'll find the code on this [Jupyter notebook](https://github.com/EdgarSic90/DataS/tree/master/LIVE%20TRADING%20BOT) & some analysis of the algorithm")
+st.write("You'll find the code on this [Jupyter notebook](https://github.com/EdgarSic90/DataSc/tree/master/LIVE%20TRADING%20BOT) & some analysis of the algorithm")
 st.write("Below you'll be able to test the model with your number of clusters on a customer data set")
 
 sns.set_theme()

@@ -20,7 +20,7 @@ import requests
 st.title('House price prediction in Perth Australia')
 st.write("""
          In this project I've explored a data set of many features aming to predict house prices in Perth.
-         On this [jupyter notebook](https://github.com/EdgarSic90/DataS/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
+         On this [jupyter notebook](https://github.com/EdgarSic90/DataSc/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
          preprocessing data by handling categorical features and numerical distributions.
          Finally building and tuning a regression model.
          """)
@@ -28,7 +28,7 @@ st.write("Below is an interactive map with a few metrics to better grasp the dat
 
 @st.cache
 def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/EdgarSic90/DataS/master/House_Prediction_FIles/all_perth_310121.csv")
+    df = pd.read_csv("https://raw.githubusercontent.com/EdgarSic90/DataSc/master/House_Prediction_FIles/all_perth_310121.csv")
     
     return df
 
@@ -38,7 +38,7 @@ df = load_data()
 def load_data2():
      global __data_columns
      global __locations 
-     url = 'https://raw.githubusercontent.com/EdgarSic90/DataS/master/House_Prediction_FIles/columns.json'
+     url = 'https://raw.githubusercontent.com/EdgarSic90/DataSc/master/House_Prediction_FIles/columns.json'
      f = requests.get(url)
      __data_columns = f.json()['data_columns']
      __locations = __data_columns[6:]
@@ -47,7 +47,7 @@ def load_data2():
 def load_data4():
      global __data_columns
      global __locations 
-     url = 'https://raw.githubusercontent.com/EdgarSic90/DataS/master/House_Prediction_FIles/columns.json'
+     url = 'https://raw.githubusercontent.com/EdgarSic90/DataSc/master/House_Prediction_FIles/columns.json'
      f = requests.get(url)
      __data_columns = f.json()['data_columns']
      return __data_columns
