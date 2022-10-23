@@ -23,9 +23,8 @@ st.write("""
          On this [jupyter notebook](https://github.com/EdgarSic90/DataS/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
          preprocessing data by handling categorical features and numerical distributions.
          Finally building and tuning a regression model.
-         /nBelow i an interactive map with a few metrics to better grasp the dataset used
          """)
-
+st.write("Below i an interactive map with a few metrics to better grasp the dataset used")
 
 @st.cache
 def load_data():
