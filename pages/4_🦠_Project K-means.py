@@ -118,7 +118,8 @@ clf = Kmeans(n_clusters, df)
 clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
 
-container.write(clf.predict(df.values, plot = True))
+#container.write(clf.predict(df.values, plot = True))
+container.pyplot(clf.predict(df.values, plot = True))
 
 df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
