@@ -52,7 +52,7 @@ with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
-        st.title("''Data science & Machine learning deserve to be shared with others''")
+        st.markdown("'_Data science & Machine learning deserve to be shared with others_'")
         st.write("##")
         st.write("""
                  
