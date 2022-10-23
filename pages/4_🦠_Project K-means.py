@@ -61,7 +61,7 @@ class Kmeans:
             Centroids[i] = new_centroid
         return Centroids
 
-    def predict(self, X, plot = False, centroid_cluster = True):                      # argument plot is used to activate or not the plot function inside
+    def predict(self, X, plot = True, centroid_cluster = False):                      # argument plot is used to activate or not the plot function inside
         Centroids_init = self.init_centroids(X)              # creating the first centroids
         res = "Initialisation" + '\n'  
         count = 0                                            # creating a count value that will help us control the while loop
@@ -121,7 +121,7 @@ clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
 
 #container.write(clf.predict(df.values, plot = True))
-container.pyplot(clf.predict(df.values, plot = True, centroid_cluster = False))
+container.pyplot(clf.predict(df.values, plot = True))
 
 df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
