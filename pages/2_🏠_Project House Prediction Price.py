@@ -17,7 +17,14 @@ import math
 import requests
 
 
-st.title('House prediction in Perth Australia')
+st.title('House price prediction in Perth Australia')
+st.write("""
+         In this project I explored a data set of many features aming to predict house prices in Perth.
+         On a [jupyter notebook](https://github.com/EdgarSic90/DataS/blob/master/House_Prediction_FIles/House%20price%20pred%20Perth%20analysis%20%26%20modeling.ipynb) I've perform simple EDA, some feature engineering, 
+         preprocessing data by handling categorical features and numerical distributions.
+         Finally building an tuning a regression model.
+         ''Below in an interactive map with a few metrics to better grasp the dataset used''
+         """)
 
 
 @st.cache
@@ -74,7 +81,7 @@ def display_map():
     info = df[['LATITUDE', 'LONGITUDE', 'PRICE', 'SUBURB', 'BUILD_YEAR']]
     fig = px.scatter_mapbox(info, lat='LATITUDE', lon='LONGITUDE', hover_name='SUBURB', 
         hover_data=['BUILD_YEAR'], color='PRICE',
-        zoom=8, height=500, width=850)
+        zoom=8, height=350, width=750)
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(margin={"r":0,"t":1,"l":1,"b":1})
     return fig
