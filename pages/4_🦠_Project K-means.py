@@ -68,7 +68,7 @@ class Kmeans:
         return Centroids
     
 
-    def predict(self, X, plot = False):                      # argument plot is used to activate or not the plot function inside
+    def predict(self, X, plot = True):                      # argument plot is used to activate or not the plot function inside
         Centroids_init = self.init_centroids(X)              # creating the first centroids
         res = "Initialisation" + '\n'  
         count = 0                                            # creating a count value that will help us control the while loop
@@ -98,8 +98,10 @@ class Kmeans:
 
             
             # print(str('Epoch: {0} | new centroids: {1} '.format(count, Centroids_looped))+ '\n')
-        return self.plot_fig(X, _class, centroid_list[-1])
-    
+        if plot == True:
+            return self.plot_fig(X, _class, centroid_list[-1])
+        else:
+            return Centroids_looped, cluster
 
     def plot_fig(self, X, y, Centroids):                                             # plot foncction thta display in a dynamic way, Clusters with they class and centroids
         Data = pd.DataFrame(X, columns=["Annual_Income_(k$)", "Spending_Score"])
@@ -122,7 +124,7 @@ def plot_elbow(df):
         #kmeanModel = KMeans(n_clusters=k).fit(X)
         #kmeanModel.fit(X)
         Sdd_opt = Kmeans(k, df.values)
-        Centroids, Clusters = Sdd_opt.predict(df.values)
+        Centroids, Clusters = Sdd_opt.predict(df.values, plot=False)
         distortions.append(sum(np.min(cdist(df.values, Centroids, 'euclidean'), axis=1)) / df.values.shape[0])
     
     plt.plot(K, distortions, 'bx-')
@@ -144,7 +146,7 @@ clf_cluster = clf.cluster_calc(df.values, clf_centroid)
 #_class, centroid_list = clf.predict2(df)
 
 #container.write(clf.predict(df.values, plot = True))
-container.pyplot(clf.predict(df.values, plot = True))
+container.pyplot(clf.predict(df.values, plot=True))
 
 df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
