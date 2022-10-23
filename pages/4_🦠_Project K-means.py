@@ -123,8 +123,10 @@ def plot_elbow(df):
     for k in K:
         #kmeanModel = KMeans(n_clusters=k).fit(X)
         #kmeanModel.fit(X)
-        Sdd_opt = Kmeans(k, df.values)
-        Centroids, Clusters = Sdd_opt.predict(df.values, plot=False)
+        clf = Kmeans(k, df)
+        clf_centroid = clf.init_centroids(df.values)
+        clf_cluster = clf.cluster_calc(df.values, clf_centroid)
+        Centroids, Clusters = clf.predict(df.values, plot=False)
         distortions.append(sum(np.min(cdist(df.values, Centroids, 'euclidean'), axis=1)) / df.values.shape[0])
     
     plt.plot(K, distortions, 'bx-')
@@ -143,9 +145,6 @@ n_clusters = container.slider("Select your perfect number of clusters !",min_val
 clf = Kmeans(n_clusters, df)
 clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
-#_class, centroid_list = clf.predict2(df)
-
-#container.write(clf.predict(df.values, plot = True))
 container.pyplot(clf.predict(df.values, plot=True))
 
 df_display = container.checkbox("Display Raw Data", value=True)
