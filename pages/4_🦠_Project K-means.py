@@ -85,15 +85,16 @@ class Kmeans:
                     for i, x in enumerate(cluster):                               # creation of the class list with the final cluster
                         _class[x] = round(i)
                     if plot == True:                                              # fonction plot will be call if desired
-                        self.plot_fig(X, _class, centroid_list[-1])
+                        fig = self.plot_fig(X, _class, centroid_list[-1])
                 else:
                     pass
 
             
             # print(str('Epoch: {0} | new centroids: {1} '.format(count, Centroids_looped))+ '\n')
-        if centroid_cluster:
+        if centroid_cluster == True:
             return Centroids_looped, cluster
-
+        else:
+            return fig
 
     def plot_fig(self, X, y, Centroids):                                             # plot foncction thta display in a dynamic way, Clusters with they class and centroids
         Data = pd.DataFrame(X, columns=["Annual_Income_(k$)", "Spending_Score"])
