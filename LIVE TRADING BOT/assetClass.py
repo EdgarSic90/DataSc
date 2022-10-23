@@ -47,14 +47,6 @@ class asset:
         self.sl = self.sl - factor
         return
 
-    def detect_tp_from_server(self) -> None:
-        placeholder = self.get_tradeable_amount()
-        multiplier = 0
-        while(placeholder > self.amount):
-            placeholder /= 2.25
-            print(placeholder)
-            multiplier += 1
-        self.set_tp_sl(self.tp_initial + 0.2*multiplier, self.sl_initial + -0.2*multiplier)
 
     def loadModel(self, directory: str) -> None:
         assert ".sav" in directory, "must be pickle file"
