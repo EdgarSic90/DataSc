@@ -16,7 +16,7 @@ st.set_page_config(
     )
 
 st.sidebar.success("Select a page above.")
-st.sidebar.write('Find the code on my [Github](https://github.com/EdgarSic90/DataS)')
+st.sidebar.write('💻Find the code on [Github](https://github.com/EdgarSic90/DataS)')
 st.sidebar.write('💬 Contact me on [Linkedin](https://linkedin.com/in/edgar-sicat)')
 
 def lad_lottieurl(url):
@@ -41,10 +41,10 @@ lottie_coding = lad_lottieurl("https://assets2.lottiefiles.com/packages/lf20_qp1
 
 # ----HEADER SECTION---------
 with st.container():
-    st.title("Hi, I am Edgar :wave:")
-    st.write("This is a platform displaying a few of my projects")
-    st.write("Find the code on my [Github](https://github.com/EdgarSic90/DataS)")
-    st.write("[Open for opportunities >](https://linkedin.com/in/edgar-sicat)")
+    st.subheader("Hi, I am Edgar :wave:")
+    st.write("This is a platform presenting some of my projects !")
+    st.write("Feel free to explore the code on my [Github](https://github.com/EdgarSic90/DataS)")
+    st.write("Open for opportunities >[Linkedin](https://linkedin.com/in/edgar-sicat)")
 
 
 #---------WHAT I DO -------
@@ -52,14 +52,14 @@ with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
-        st.title("Data science & Machine learning deserve to be shared with others")
+        st.title("''Data science & Machine learning deserve to be shared with others''")
         st.write("##")
         st.write("""
                  
                  What you'll find 
-                 - Jupyter notebooks with EDA
-                 - Modeling 
-                 - Interactive dashboards
+                 - Interactive dashboards & visualizations
+                 - Modeling & testing on github 
+                 - Various EDA on github
                  
                  """)
 
