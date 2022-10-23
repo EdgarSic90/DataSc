@@ -16,7 +16,7 @@ st.set_page_config(
     )
 
 st.sidebar.success("Select a page above.")
-st.sidebar.write('💻Find the code on [Github](https://github.com/EdgarSic90/DataS)')
+st.sidebar.write('💻 Find the code on [Github](https://github.com/EdgarSic90/DataS)')
 st.sidebar.write('💬 Contact me on [Linkedin](https://linkedin.com/in/edgar-sicat)')
 
 def lad_lottieurl(url):
@@ -52,7 +52,7 @@ with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
-        st.markdown("'_Data science & Machine learning deserve to be shared with others_'")
+        st.markdown("_Data science & Machine learning deserve to be shared with others_")
         st.write("##")
         st.write("""
                  
