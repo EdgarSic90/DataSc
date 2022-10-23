@@ -29,12 +29,17 @@ def load_data():
 
 df = load_data()
 
+_class = None
+centroid_list = None
+
 @st.cache
 def euclidian_distance(v1,v2):
     return np.sqrt(np.sum((v1-v2)**2))
 
 @st.cache
 class Kmeans:
+    
+    
     
     def __init__(self, k, X):     # Storing value inside the class so we can reuse them in the functions
         self.k = k  
@@ -61,10 +66,12 @@ class Kmeans:
             Centroids[i] = new_centroid
         return Centroids
 
-    def predict(self, X, plot = True, centroid_cluster = False):                      # argument plot is used to activate or not the plot function inside
+    def predict(self, X, plot = False):                      # argument plot is used to activate or not the plot function inside
         Centroids_init = self.init_centroids(X)              # creating the first centroids
         res = "Initialisation" + '\n'  
         count = 0                                            # creating a count value that will help us control the while loop
+        global _class
+        global centroid_list
         centroid_list = []                                   # centroid list that will be use to compare centroids for convergence or not
         _class = np.zeros((self.nb_samples,))                # Empy array that will be populated with X classes in order to plot them
         converged = False                                    # boolen that will help us control the loop
@@ -85,16 +92,13 @@ class Kmeans:
                     for i, x in enumerate(cluster):                               # creation of the class list with the final cluster
                         _class[x] = round(i)
                     if plot == True:                                              # fonction plot will be call if desired
-                        fig = self.plot_fig(X, _class, centroid_list[-1])
+                        self.plot_fig(X, _class, centroid_list[-1])
                 else:
                     pass
 
             
             # print(str('Epoch: {0} | new centroids: {1} '.format(count, Centroids_looped))+ '\n')
-        if centroid_cluster == True:
-            return Centroids_looped, cluster
-        else:
-            return fig
+        return Centroids_looped, cluster
 
     def plot_fig(self, X, y, Centroids):                                             # plot foncction thta display in a dynamic way, Clusters with they class and centroids
         Data = pd.DataFrame(X, columns=["Annual_Income_(k$)", "Spending_Score"])
@@ -119,9 +123,10 @@ n_clusters = container.slider("Select your perfect number of clusters !",min_val
 clf = Kmeans(n_clusters, df)
 clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
+Centroids_looped_, cluster_ = clf.predict(df.values)
 
 #container.write(clf.predict(df.values, plot = True))
-container.pyplot(clf.predict(df.values, plot = True))
+container.pyplot(clf.plot_fig(df, _class, centroid_list[-1]))
 
 df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
