@@ -37,8 +37,6 @@ def euclidian_distance(v1,v2):
 @st.cache
 class Kmeans:
     
-    
-    
     def __init__(self, k, X):     # Storing value inside the class so we can reuse them in the functions
         self.k = k  
         self.nb_it = 100         # 100 iteration max
@@ -97,6 +95,40 @@ class Kmeans:
             
             # print(str('Epoch: {0} | new centroids: {1} '.format(count, Centroids_looped))+ '\n')
         return Centroids_looped, cluster
+    
+        def predict2(self, X, plot = False):                      # argument plot is used to activate or not the plot function inside
+            Centroids_init = self.init_centroids(X)              # creating the first centroids
+            res = "Initialisation" + '\n'  
+            count = 0                                            # creating a count value that will help us control the while loop
+            global _class
+            global centroid_list
+            centroid_list = []                                   # centroid list that will be use to compare centroids for convergence or not
+            _class = np.zeros((self.nb_samples,))                # Empy array that will be populated with X classes in order to plot them
+            converged = False                                    # boolen that will help us control the loop
+            
+            while count < self.nb_it and not converged:
+                if count == 0:                                   # First step in the loop, initation, appending centroid, calculating first cluster
+                    centroid_list.append(Centroids_init)
+                    cluster = self.cluster_calc(X, Centroids_init)
+                    Centroids_looped = Centroids_init 
+                    count += 1                                   # + 1 count for the first itteration
+                else:
+                    Centroids_looped = self.create_new_centroid(cluster, X)          # after the first step, this will loop unless 2 elments from the centroid list are not different
+                    cluster = self.cluster_calc(X, Centroids_looped)
+                    centroid_list.append(Centroids_looped)
+                    count += 1
+                    if np.array_equal((centroid_list[count-1]),(centroid_list[count-2])) == True:
+                        converged = True                                              # after some iteration, 2 centroids are equals and so converged, we are passing true to the boolean
+                        for i, x in enumerate(cluster):                               # creation of the class list with the final cluster
+                            _class[x] = round(i)
+                        if plot == True:                                              # fonction plot will be call if desired
+                            self.plot_fig(X, _class, centroid_list[-1])
+                    else:
+                        pass
+
+                
+                # print(str('Epoch: {0} | new centroids: {1} '.format(count, Centroids_looped))+ '\n')
+            return _class, centroid_list
 
     def plot_fig(self, X, y, Centroids):                                             # plot foncction thta display in a dynamic way, Clusters with they class and centroids
         Data = pd.DataFrame(X, columns=["Annual_Income_(k$)", "Spending_Score"])
@@ -110,7 +142,18 @@ class Kmeans:
         ax = sns.scatterplot(data=Result2, x="Annual_Income_(k$)", y="Spending_Score", hue="ClassCentoid", palette="dark", s=100, legend=False)   # Centroid display
         return ax
 
-
+@st.cache
+def plot_fig2( X, y, Centroids):                                             # plot foncction thta display in a dynamic way, Clusters with they class and centroids
+    Data = pd.DataFrame(X, columns=["Annual_Income_(k$)", "Spending_Score"])
+    Y = pd.DataFrame(y, columns=["Class"])
+    Result = pd.concat([Data, Y], axis=1)                                        # Concatenating X data set and the class list
+    Centroid = pd.DataFrame(Centroids, columns=["Annual_Income_(k$)", "Spending_Score"])
+    Class = pd.DataFrame(list(range(0,len(Centroids))) , columns=["ClassCentoid"])
+    Result2 = pd.concat([Centroid, Class], axis=1)                               # Concatenating the Centroid list with an array created with class
+    sns.set(rc={'figure.figsize':(11.7,8.27)})
+    ax = sns.scatterplot(data=Result, x="Annual_Income_(k$)", y="Spending_Score", hue="Class", palette="bright")      # Clusters display
+    ax = sns.scatterplot(data=Result2, x="Annual_Income_(k$)", y="Spending_Score", hue="ClassCentoid", palette="dark", s=100, legend=False)   # Centroid display
+    return ax
 
 container = st.container()
 
@@ -121,7 +164,7 @@ n_clusters = container.slider("Select your perfect number of clusters !",min_val
 clf = Kmeans(n_clusters, df)
 clf_centroid = clf.init_centroids(df.values)
 clf_cluster = clf.cluster_calc(df.values, clf_centroid)
-Centroids_looped_, cluster_ = clf.predict(df.values)
+_class, centroid_list = clf.predict2(df.values)
 
 #container.write(clf.predict(df.values, plot = True))
 container.pyplot(clf.plot_fig(df, _class, centroid_list[-1]))
