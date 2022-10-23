@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 class telegramBot:
     def __init__(self, botToken : str, chatID : str, graphDirectory : str = ""):
         """
-        If you got any problems drop me a telegram message at @Maaxweel
         botToken : api bot token given by bot father @BotFather on telegram,
         chatTd : chat id as assigned by user, you can find your unique chatid at api.telegram.org/bot{bottoken}/getUpdates, send a message and refresh,
         graphDirectory : default value is an empty string, use if you intend to send plotly.graph_objs.Figure graphs
