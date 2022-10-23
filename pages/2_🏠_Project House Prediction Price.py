@@ -24,7 +24,7 @@ st.write("""
          preprocessing data by handling categorical features and numerical distributions.
          Finally building and tuning a regression model.
          """)
-st.write("Below i an interactive map with a few metrics to better grasp the dataset used")
+st.write("Below is an interactive map with a few metrics to better grasp the dataset used")
 
 @st.cache
 def load_data():
