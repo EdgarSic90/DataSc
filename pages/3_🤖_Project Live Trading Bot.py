@@ -9,6 +9,7 @@ Created on Tue Oct 11 15:34:16 2022
 import streamlit as st
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
+from PIL import Image
 
 st.title('Live Trading Bot')
 
@@ -23,5 +24,5 @@ st.write("You can see below a plot of an asset Backtested with a few performance
 
 container = st.container()
 
-img = mpimg.imread('Back-Testing-Trading-Bot.png')
-container.write(plt.imshow(img))
+image = Image.open('Back-Testing-Trading-Bot.png')
+st.image(image, caption='Backtest of live trading bot')
