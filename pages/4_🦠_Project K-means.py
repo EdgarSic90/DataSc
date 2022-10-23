@@ -29,8 +29,6 @@ def load_data():
 
 df = load_data()
 
-_class = None
-centroid_list = None
 
 @st.cache
 def euclidian_distance(v1,v2):
