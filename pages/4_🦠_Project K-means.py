@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import random
+from scipy.spatial.distance import cdist
 
 st.title('K-means Clustering')
 
@@ -112,11 +113,29 @@ class Kmeans:
         ax = sns.scatterplot(data=Result2, x="Annual_Income_(k$)", y="Spending_Score", hue="ClassCentoid", palette="dark", s=100, legend=False)   # Centroid display
         return plt
 
+@st.cache
+def plot_elbow(df):
+    # k means determine k
+    distortions = []
+    K = range(1,13)
+    for k in K:
+        #kmeanModel = KMeans(n_clusters=k).fit(X)
+        #kmeanModel.fit(X)
+        Sdd_opt = Kmeans(k, df.values)
+        Centroids, Clusters = Sdd_opt.predict(df.values)
+        distortions.append(sum(np.min(cdist(df.values, Centroids, 'euclidean'), axis=1)) / df.values.shape[0])
+    
+    plt.plot(K, distortions, 'bx-')
+    plt.xlabel('k')
+    plt.ylabel('Distortion')
+    plt.title('The Elbow Method showing the optimal k')
+    return plt
+
 
 container = st.container()
 
 #container.write("Select your perfect number of clusters !")
-n_clusters = container.slider("Select your perfect number of clusters !",min_value=2,max_value=16,)
+n_clusters = container.slider("Select your perfect number of clusters !",min_value=2,max_value=13,)
    
 # You can call any Streamlit command, including custom components:
 clf = Kmeans(n_clusters, df)
@@ -131,11 +150,9 @@ df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
     container.write(df)
     
-    
-#container.write("This is outside the container")
-
-
-
+df_display = container.checkbox("Display elbow plot to determinate optimal number of clusters", value=False) 
+if df_display:
+    container.pyplot(plot_elbow(df))
 
 
 
