@@ -15,9 +15,9 @@ st.set_page_config(
     page_icon="👋"
     )
 
-st.title('Main Page')
 st.sidebar.success("Select a page above.")
-
+st.sidebar.write('Find the code on my [Github](https://github.com/EdgarSic90/DataS)')
+st.sidebar.write('💬 Contact me on [Linkedin](https://linkedin.com/in/edgar-sicat)')
 
 def lad_lottieurl(url):
     r = requests.get(url)
@@ -41,10 +41,9 @@ lottie_coding = lad_lottieurl("https://assets2.lottiefiles.com/packages/lf20_qp1
 
 # ----HEADER SECTION---------
 with st.container():
-    st.subheader("Hi, I am Edgar :wave:")
-    st.title("A post graduate Data Scientist")
+    st.title("Hi, I am Edgar :wave:")
     st.write("This is a platform displaying a few of my projects")
-    st.write("Find the code on my [Github](https://github.com/EdgarSic90/DataSc)")
+    st.write("Find the code on my [Github](https://github.com/EdgarSic90/DataS)")
     st.write("[Open for opportunities >](https://linkedin.com/in/edgar-sicat)")
 
 
@@ -53,14 +52,14 @@ with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
-        st.header("What I do")
+        st.title("Data science & Machine learning deserve to be shared with others")
         st.write("##")
         st.write("""
                  
-                 bLbaaaaaaaaaaaaaaaaaaaaaaaaa
-                 - are you 
-                 - this also
-                 - certainly this as well
+                 What you'll find 
+                 - Jupyter notebooks with EDA
+                 - Modeling 
+                 - Interactive dashboards
                  
                  """)
 
