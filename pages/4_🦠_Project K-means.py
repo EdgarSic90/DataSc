@@ -128,8 +128,8 @@ def plot_elbow(df):
         clf_cluster = clf.cluster_calc(df.values, clf_centroid)
         Centroids, Clusters = clf.predict(df.values, plot=False)
         distortions.append(sum(np.min(cdist(df.values, Centroids, 'euclidean'), axis=1)) / df.values.shape[0])
-    
-    plt.plot(K, distortions, 'bx-')
+    K_ = np.arange(1, 13)
+    plt.plot(K_, distortions, 'bx-')
     plt.xlabel('k')
     plt.ylabel('Distortion')
     plt.title('The Elbow Method showing the optimal k')
@@ -151,8 +151,8 @@ df_display = container.checkbox("Display Raw Data", value=True)
 if df_display:
     container.write(df)
     
-df_display = container.checkbox("Display elbow plot to determinate optimal number of clusters", value=False) 
-if df_display:
+df_display2 = container.checkbox("Display elbow plot to determinate optimal number of clusters", value=False) 
+if df_display2:
     container.pyplot(plot_elbow(df))
 
 
