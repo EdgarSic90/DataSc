@@ -118,7 +118,7 @@ class Kmeans:
         Class = pd.DataFrame(list(range(0,len(Centroids))) , columns=["ClassCentoid"])
         Result2 = pd.concat([Centroid, Class], axis=1)                               # Concatenating the Centroid list with an array created with class
         sns.set(rc={'figure.figsize':(11.7,8.27)})
-        ax = sns.scatterplot(data=Result, x="Annual_Income_(k$)", y="Spending_Score", hue="Class", palette="bright")      # Clusters display
+        ax = sns.scatterplot(data=Result, x="Annual_Income_(k$)", y="Spending_Score", hue="Class", palette="bright", legend=False)      # Clusters display
         ax = sns.scatterplot(data=Result2, x="Annual_Income_(k$)", y="Spending_Score", hue="ClassCentoid", palette="dark", s=100, legend=False)   # Centroid display
         return plt
 
