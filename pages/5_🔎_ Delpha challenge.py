@@ -34,9 +34,9 @@ df = load_data()
 @st.cache
 def display_map():
 
-    info = df[['Latitude', 'Longitude', 'name', 'Number_of_employees', 'Renevue']]
-    fig = px.scatter_mapbox(info, lat='Latitude', lon='Longitude', hover_name='name', 
-        hover_data=['Number_of_employees'], color='Renevue',
+    info = df[['Latitude', 'Longitude', 'Name', 'Number_of_employees', 'Revenue']]
+    fig = px.scatter_mapbox(info, lat='Latitude', lon='Longitude', hover_name='Name', 
+        hover_data=['Number_of_employees'],
         zoom=1, height=350, width=750, size_max=50 , center={'lat' : 48.8588897, 'lon' : 2.3200410217200766})
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(margin={"r":0,"t":1,"l":1,"b":1})
