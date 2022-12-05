@@ -1,7 +1,7 @@
 name,Website,Sector,adress,Number_of_employees,Renevue
-Microsoft,https://news.microsoft.com/,Développement de logiciels,"Redmond, Washington","221,000",203075000.0
-Salesforce,http://www.salesforce.com,Développement de logiciels,"San Francisco, CA","73,541",30294000.0
-Bouygues Construction,http://www.bouygues-construction.com/,Bâtiment,Saint-Quentin-en-Yvelines cedex,"200,000",39785000.0
-BNP Paribas,https://group.bnpparibas/en,Services bancaires,Paris,"190,000",59662000.0
-HSBC,http://www.hsbc.com,Services financiers,London,"219,697",56112000.0
-Dataiku,http://dataiku.com,Développement de logiciels,"New York, New York",1000,0.0
+"Microsoft,https://news.microsoft.com/,Développement de logiciels,""Redmond, Washington"",""221,000"",203075000.0"
+"Salesforce,http://www.salesforce.com,Développement de logiciels,""San Francisco, CA"",""73,541"",30294000.0"
+"Bouygues Construction,http://www.bouygues-construction.com/,Bâtiment,Saint-Quentin-en-Yvelines cedex,""200,000"",39785000.0"
+"BNP Paribas,https://group.bnpparibas/en,Services bancaires,Paris,""190,000"",59662000.0"
+"HSBC,http://www.hsbc.com,Services financiers,London,""219,697"",56112000.0"
+"Dataiku,http://dataiku.com,Développement de logiciels,""New York, New York"",1000,150000000"
