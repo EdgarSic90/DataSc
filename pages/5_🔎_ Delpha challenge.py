@@ -66,7 +66,7 @@ container2 = st.container()
 
 #container2.subheader(f"{percent_missing}% of missing data")
 
-container2.markdown(f"<h2 style='text-align: center;'>{percent_missing}% of missing data</h2>", unsafe_allow_html=True)
+container2.markdown(f"<h4 style='text-align: center;'>{percent_missing}% of missing data</h4>", unsafe_allow_html=True)
 
 
 
