@@ -19,7 +19,7 @@ tickers = ['MSFT', 'CRM', 'BOUYY', 'BNPQY', 'HSBC', 'dataiku']
 if __name__ == '__main__':
     
     print('Initiating Webscrapping ...')
-        # instanciating linkedin creadentials & chrome driver 
+        # Instanciating linkedin creadentials & chrome driver 
     creds = Credentials()
     ws = Wscrap(creds.email, creds.password)
     ws.Webdriver_instance("https://linkedin.com/uas/login")
@@ -29,6 +29,7 @@ if __name__ == '__main__':
     Sector = []
     Adress = []
     Website = []
+    Social_media = []
     Number_of_employees = []
     Revenue = []
     Latitude = []
@@ -43,14 +44,19 @@ if __name__ == '__main__':
         Sector.append(linkedin_info[1])
         Adress.append(linkedin_info[2])
         Website.append(linkedin_info[3])
+        Number_of_employees.append(linkedin_info[4])
             
             # Yahoo profile scrapping
-        nb_employees_ = ws.Yahoo_profile_webscrapping(tickers[i])
-        Number_of_employees.append(nb_employees_)
+        #nb_employees_ = ws.Yahoo_profile_webscrapping(tickers[i])
+        #Number_of_employees.append(nb_employees_)
             
             # Yahoo quotes scrapping
         Revenue_ = ws.Yahoo_quotes_webscrapping(tickers[i])
         Revenue.append(Revenue_)
+        
+            # Social media links scrapping
+        s_m = ws.collect_social_media_links(linkedin_info[3])
+        Social_media.append(s_m)
         
             # Retrieving coordinates from scrapped adresses
         Localisation = ws.Coordinate_for_city(linkedin_info[2])
@@ -62,6 +68,7 @@ if __name__ == '__main__':
     Company_info_dict['Sector'] = Sector
     Company_info_dict['Adress'] = Adress
     Company_info_dict['Website'] = Website
+    Company_info_dict['Social_media'] = Social_media
     Company_info_dict['Number_of_employees'] = Number_of_employees
     Company_info_dict['Revenue'] = Revenue
     Company_info_dict['Latitude'] = Latitude

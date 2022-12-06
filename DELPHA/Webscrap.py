@@ -94,6 +94,7 @@ class Wscrap:
         self.Sector = None
         self.adress = None
         self.Website = None
+        self.Number_of_employees1 = None
         
         self.driver.get(f'https://www.linkedin.com/company/{company}/about') 
         start = time.time()
@@ -142,9 +143,22 @@ class Wscrap:
         except:
             self.Website = np.NaN
             print(f'Unable to collect {company} website')
-
-        # List comprehension to get Sector and Adress 
+        
+        # List comprehension to get Number of employees
         try:
+            Number_of_employees1_ = [item.get_text(strip=True) for item in self.soup.find_all(class_="text-body-small t-black--light mb4")][0]
+            Number_of_employees1_2 = ""
+            for i in range(len(Number_of_employees1_)):
+                if Number_of_employees1_[i].isnumeric():
+                    Number_of_employees1_2 += Number_of_employees1_[i]
+            self.Number_of_employees1 = Number_of_employees1_2
+
+        except:
+            self.Number_of_employees1 = np.NaN
+            print(f'Unable to collect {company} the number of employee')
+        
+        # List comprehension to get Sector and Adress 
+        try:                                                                                    
             Sector_Adress = [item.get_text(strip=True) for item in self.soup.find_all(class_="org-top-card-summary-info-list__info-item")]
             self.Sector = Sector_Adress[0]
             self.adress = Sector_Adress[-2]
@@ -153,7 +167,7 @@ class Wscrap:
             self.adress = np.NaN
             print(f'Unable to collect {company} Sector & Adress')
 
-        return [self.name, self.Sector, self.adress, self.Website]
+        return [self.name, self.Sector, self.adress, self.Website, self.Number_of_employees1]
             
 
     def Yahoo_profile_webscrapping(self, ticker : str):
@@ -242,6 +256,32 @@ class Wscrap:
             print(f'Unable to collect {city} Coordinates')
         
         return [self.Latitude, self.Longitude]
+
+
+    def collect_social_media_links(self, url):
+        """
+        Retrives social media links from an url
+        """
+        headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36'}
+        try:
+            r = requests.get(url ,headers=headers)
+            links = []
+            self.links_final = []
+            social_media_platforms = ["facebook", "Facebook", "linkedin", "Linkedin", "twitter", "Twitter" , "Pinterest", "pinterest"
+                                      "youtube", "Youtube", "instagram", "Instagram", "tiktok", "TikTok", "Snapchat", "snapchat", "Reddit", "reddit"]
+                
+            for link in BeautifulSoup(r.content, feature='lxml').find_all('a', href=True):
+                links.append(link['href'])
+            
+            for link in links:
+                if any(social_medial in link for social_medial in social_media_platforms):
+                    self.links_final.append(link)
+        except:
+            print(f'Unable to collect {url} Social media')
+            
+        return self.links_final
+
+
 
 
 
