@@ -14,13 +14,13 @@ st.title('🔍Web-Scrapping challenge for Delpha!🔎')
 st.write("For this challenge I have scrapped data from Linkedin & Yahoo Finance in order to populate a csv file with various informations.")
 st.write("""
          In this [Github Repository](https://github.com/EdgarSic90/DataSc/tree/master/DELPHA) 
-         you'll find the Web scrapping Python code full commented and the csv file.
+         you'll find 3 python files : main.py, Webscrap.py Class & a file for your linkedin credentials, + 1 csv file. Each of them have comments describing the processes.
          """)
 st.write("""
              In this [Github Repository](https://github.com/EdgarSic90/DataSc/tree/master/pages) 
-             You'll find the code that allows for this Dashboard and app to be hosted ! (Feel free to explore my other projets & Homepage) 
+             You'll find the code that allows for this Dashboard and web app to be hosted ! (Feel free to explore my other projets & Homepage) 
          """)
-st.write("Below is an interactive map with a few metrics to better grasp the dataset used & useful visualizations")
+st.write("Below is an interactive map with a few metrics to better grasp the dataset & useful visualizations")
 
 
 @st.cache
