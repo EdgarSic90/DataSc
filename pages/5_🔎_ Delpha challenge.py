@@ -51,16 +51,19 @@ container = st.container()
 
 container.write(display_map())
 
+df_display = container.checkbox("Click to display scrapped data", value=True)
+if df_display:
+    container.write(df)
+    
 col1, col2, = st.columns(2)
 
 col1.bar_chart(df, x="Name", y="Number_of_employees")
 
-col2.metric("% data missing in the scrapped dataset", percent_missing)
+col2.bar_chart(df, x="Name", y="Revenue")
 
-df_display = container.checkbox("Click to display scrapped data", value=True)
-if df_display:
-    container.write(df)
+container2 = st.container()
 
+container2.metric("% missing data", percent_missing)
 
 
 
