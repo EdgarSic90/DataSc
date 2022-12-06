@@ -63,7 +63,7 @@ col2.bar_chart(df, x="Name", y="Revenue")
 
 container2 = st.container()
 
-container2.metric("% missing data", percent_missing)
+container2.subheader(f"{percent_missing}% of missing data", )
 
 
 
