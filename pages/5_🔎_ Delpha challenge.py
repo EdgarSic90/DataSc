@@ -30,10 +30,10 @@ def load_data():
     return df
 
 df = load_data()
-count_nan = df.isnull().sum()
-all_count_ = df.count().values
-all_count = all_count_[0]*all_count_[1]
-percent_missing = round((count_nan/all_count)*100, 2)
+#count_nan = df.isnull().sum()
+#all_count_ = df.count().values
+#all_count = all_count_[0]*all_count_[1]
+#percent_missing = round((count_nan/all_count)*100, 2)
 
 @st.cache
 def display_map():
@@ -56,7 +56,7 @@ col1, col2, = st.columns(2)
 col1.write("Number of employeers per companies")
 col1.bar_chart(df, x=df['Name'], y=["Number_of_employees"])
 
-col2.metric("% data missing", percent_missing)
+#col2.metric("% data missing", percent_missing)
 
 
 
