@@ -51,6 +51,7 @@ container = st.container()
 
 container.write(display_map())
 
+
 df_display = container.checkbox("Click to display scrapped data", value=True)
 if df_display:
     container.write(df)
@@ -63,7 +64,9 @@ col2.bar_chart(df, x="Name", y="Revenue")
 
 container2 = st.container()
 
-container2.subheader(f"{percent_missing}% of missing data", )
+#container2.subheader(f"{percent_missing}% of missing data")
+
+container2.markdown(f"<h1 style='text-align: center; color: red;'>{percent_missing}% of missing data</h1>", unsafe_allow_html=True)
 
 
 
