@@ -30,7 +30,7 @@ def load_data():
     return df
 
 df = load_data()
-count_nan = df.isnull().sum()
+count_nan = sum(df.isnull().sum().values)
 all_count_ = df.count().values
 all_count = all_count_[0]*all_count_[1]
 percent_missing = round((count_nan/all_count)*100, 2)
@@ -53,7 +53,10 @@ container.write(display_map())
 
 col1, col2, = st.columns(2)
 
-col1.bar_chart(df, x='Name', y="Number_of_employees")
+df_bar = pd.DataFrame([df['Name'].values, df['Number_of_employees'].values], 
+                      columns=["Company", "Nb employees"])
+
+col1.bar_chart(df_bar)
 
 col2.metric("% data missing", percent_missing)
 
