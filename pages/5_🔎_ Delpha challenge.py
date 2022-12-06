@@ -10,17 +10,17 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.title('Web-Scrapping challenge for Delpha!')
+st.title('🔍Web-Scrapping challenge for Delpha!🔎')
 st.write("For this challenge I have scrapped data from Linkedin & Yahoo Finance in order to populate a csv file with various informations.")
 st.write("""
          In this [Github Repository](https://github.com/EdgarSic90/DataSc/tree/master/DELPHA) 
-         you'll find the Web scrapping Python code full commented and and the csv file.
+         you'll find the Web scrapping Python code full commented and the csv file.
          """)
 st.write("""
              In this [Github Repository](https://github.com/EdgarSic90/DataSc/tree/master/pages) 
              You'll find the code that allows for this Dashboard and app to be hosted ! (Feel free to explore my other projets & Homepage) 
          """)
-st.write("Below is an interactive map with a few metrics to better grasp the dataset used")
+st.write("Below is an interactive map with a few metrics to better grasp the dataset used & useful visualizations")
 
 
 @st.cache
@@ -53,11 +53,11 @@ container.write(display_map())
 
 col1, col2, = st.columns(2)
 
-col1.bar_chart(df, x="Name", y="Name")
+col1.bar_chart(df, x="Name", y="Number_of_employees")
 
-col2.metric("% data missing", percent_missing)
+col2.metric("% data missing in the scrapped dataset", percent_missing)
 
-df_display = container.checkbox("Display Dataframe", value=True)
+df_display = container.checkbox("Click to display scrapped data", value=True)
 if df_display:
     container.write(df)
 
