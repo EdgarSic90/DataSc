@@ -12,8 +12,8 @@ from Credentials import Credentials
 
 ############### Defining company names for Linkedin & Yahoo webscrapping ####################
 
-companies_linkedin = ['microsoft', 'salesforce', 'bouygues-construction', 'bnp-paribas', 'hsbc', 'dataiku']
-tickers = ['MSFT', 'CRM', 'BOUYY', 'BNPQY', 'HSBC', 'dataiku']
+companies_linkedin = ['microsoft', 'salesforce', 'bouygues-construction', 'bnp-paribas', 'hsbc', 'dataiku'] 
+tickers = ['MSFT', 'CRM', 'BOUYY', 'BNPQY', 'HSBC', 'dataiku'] 
 
 
 if __name__ == '__main__':

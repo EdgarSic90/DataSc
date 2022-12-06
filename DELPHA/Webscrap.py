@@ -151,6 +151,10 @@ class Wscrap:
             for i in range(len(Number_of_employees1_)):
                 if Number_of_employees1_[i].isnumeric():
                     Number_of_employees1_2 += Number_of_employees1_[i]
+                elif Number_of_employees1_[i] == " ":
+                    pass
+                else:
+                    break
             self.Number_of_employees1 = Number_of_employees1_2
 
         except:
