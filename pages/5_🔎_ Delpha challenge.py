@@ -53,8 +53,7 @@ container.write(display_map())
 
 col1, col2, = st.columns(2)
 
-col1.write("Number of employeers per companies")
-col1.bar_chart(df, x='Name', y="Number_of_employees")
+col1.bar_chart(df[["Name", "Number_of_employees"]])
 
 #col2.metric("% data missing", percent_missing)
 
