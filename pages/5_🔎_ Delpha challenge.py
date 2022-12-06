@@ -30,6 +30,10 @@ def load_data():
     return df
 
 df = load_data()
+count_nan = df.isnull().sum()
+all_count_ = df.count().values
+all_count = all_count_[0]*all_count_[1]
+percent_missing = round((count_nan/all_count)*100, 2)
 
 @st.cache
 def display_map():
@@ -37,7 +41,7 @@ def display_map():
     info = df[['Latitude', 'Longitude', 'Name', 'Number_of_employees', 'Revenue']]
     fig = px.scatter_mapbox(info, lat='Latitude', lon='Longitude', hover_name='Name', 
         hover_data=['Number_of_employees'],
-        zoom=1, height=350, width=750, size_max=50 , center={'lat' : 48.8588897, 'lon' : 2.3200410217200766})
+        zoom=2, height=350, width=750, size_max=50 , center={'lat' : 48.8588897, 'lon' : 2.3200410217200766})
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(margin={"r":0,"t":1,"l":1,"b":1})
     return fig
@@ -46,6 +50,15 @@ def display_map():
 container = st.container()
 
 container.write(display_map())
+
+col1, col2, = st.columns(2)
+
+col1.write("Number of employeers per companies")
+col1.bar_chart(df, x=df['Name'], y=["Number_of_employees"])
+
+col2.metric("% data missing", percent_missing)
+
+
 
 df_display = container.checkbox("Display Dataframe", value=True)
 if df_display:
