@@ -53,14 +53,9 @@ container.write(display_map())
 
 col1, col2, = st.columns(2)
 
-df_bar = pd.DataFrame([df['Name'].values, df['Number_of_employees'].values], 
-                      columns=["Company", "Nb employees"])
-
-col1.bar_chart(df_bar)
+col1.bar_chart(df, x="Name", y="Name")
 
 col2.metric("% data missing", percent_missing)
-
-
 
 df_display = container.checkbox("Display Dataframe", value=True)
 if df_display:
